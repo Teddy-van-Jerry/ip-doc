@@ -1,18 +1,53 @@
 \documentclass{ip-doc}
+\usepackage{lipsum}
 
 \title{Example IP Module}
 \author{Wuqiong Zhao}
+\version{1.0}
 
 \begin{document}
 \maketitle
 
-\section{Overview}
+\begin{factstable}
+\rowcolors{2}{gray!10}{white}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{l|X}
+\toprule
+  Name & Example IP \\
+  Identifier & \texttt{org.wqzhao.example\_ip} \\
+  Version & \theversion \\
+  Author & \href{https://wqzhao.org}{Wuqiong Zhao} {\scriptsize(me@wqzhao.org)} \\
+  Device & AMD UltraScale+ \\
+  Platform & Vivado \\
+  Design Files & Verilog \\
+  Simulation Model & Verilog \\
+  Constraints File & N/A \\
+\bottomrule
+\end{tabularx}
+\end{factstable}
+
+\section{Introduction}
+The ``Example IP'' is just an example.
+You will need to create your own IP module to use this class to document it elegantly.
 
 \section{Features}
+
+\begin{itemize}
+  \item Support AXI4 interface.
+  \item Another feature which is not quite related to \LaTeX.
+\end{itemize}
+
+\section{Usage}
 
 \subsection{Text}
 The text is in sans-serif font ``TeX Gyre Heros,'' a ``Helvetica'' clone.
 Section numbers are in the left margin.
+
+\subsubsection{Subsubsection}
+Here is a subsubsection, the smallest sectioning command that comes with numbering.
+
+\paragraph{Paragraph.}
+Here is a paragraph, which has a run-in header.
 
 \subsection{Math}
 Math fonts are still the serif ones.
@@ -21,5 +56,7 @@ Display equations can also be used:
 \begin{equation}
   \int_0^1 x^2 \, \mathrm{d}x = \frac13.
 \end{equation}
+
+Here is also \lipsum
 
 \end{document}
