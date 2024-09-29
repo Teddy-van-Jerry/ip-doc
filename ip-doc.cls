@@ -96,7 +96,7 @@
 \RequirePackage { lastpage }
 \ihead { \textbf { \@title } \quad v \theversion }
 \setkomafont { pageheadfoot } { \normalfont\normalcolor\upshape }
-\ohead { \@currentlabel{} ~ \@currentlabelname }
+\ohead { \@currentlabel. ~ \@currentlabelname }
 \renewcommand \pagemark
   {
     \small
@@ -114,12 +114,12 @@
 % vertical center of the cell
 \renewcommand \tabularxcolumn [ 1 ] { m{#1} }
 % new environment for a table (facts table)
-\NewDocumentEnvironment { factstable } { O{IP~Facts~Table} }
+\NewDocumentEnvironment { factstable } { O{} O{IP~Facts~Table} }
   {
-    \begin{wrapstuff}[type=table,width=.5\linewidth]
+    \begin{wrapstuff}[type=table, width=.5\linewidth, #1]
       \footnotesize
       \aboverulesep = 0mm \belowrulesep = 0mm
-      {\centering\bfseries #1\par\vspace{.25\baselineskip}}
+      {\centering\bfseries #2\par\vspace{.25\baselineskip}}
   }
   {
     \end{wrapstuff}
@@ -127,11 +127,15 @@
 
 %% Other Settings
 \RequirePackage { enumitem }
+\setlist { nosep, leftmargin = * }
 
 %% Hyperref
 \RequirePackage
   [
-    , hidelinks
+    , colorlinks
+    , linkcolor = blue
+    , urlcolor  = blue
+    , citecolor = blue
     , pdfusetitle
   ] { hyperref }
 
