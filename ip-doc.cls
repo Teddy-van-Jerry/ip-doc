@@ -129,6 +129,29 @@
 \RequirePackage { enumitem }
 \setlist { nosep, leftmargin = * }
 
+%% Title Style
+\NewDocumentCommand \theauthor { } { \@author }
+\NewDocumentCommand \thetitle { } { \@title }
+\NewDocumentCommand \thedate { } { \@date }
+\RenewDocumentCommand \@maketitle { }
+  {
+    \noindent\rule{\textwidth}{2pt} \par
+    \vspace{6pt}
+    {
+      \huge
+      \textbf { \thetitle }
+      \hfill
+      \LARGE
+      v \theversion \par
+    }
+    \vspace{2pt}
+    \noindent\rule{\textwidth}{1pt} \par
+    {
+      \hfill\thedate\par
+      \hfill\textit{\theauthor}\par
+    }
+  }
+
 %% Hyperref
 \RequirePackage
   [
