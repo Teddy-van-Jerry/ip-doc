@@ -91,12 +91,13 @@
 \RequirePackage { mathtools }
 
 %% Header and Footer
-\RequirePackage { scrlayer-scrpage }
-\pagestyle { scrheadings }
+\RequirePackage [ automark ] { scrlayer-scrpage }
 \RequirePackage { lastpage }
+\pagestyle { scrheadings }
 \ihead { \textbf { \@title } \quad v \theversion }
+\chead { }
+\ohead { \rightmark }
 \setkomafont { pageheadfoot } { \normalfont\normalcolor\upshape }
-\ohead { \@currentlabel. ~ \@currentlabelname }
 \renewcommand \pagemark
   {
     \small
