@@ -128,6 +128,7 @@
 %% Other Settings
 \RequirePackage { enumitem }
 \setlist { nosep, leftmargin = * }
+\RequirePackage [ labelfont = bf ] { caption }
 
 %% Title Style
 \NewDocumentCommand \theauthor { } { \@author }
@@ -147,6 +148,7 @@
     \vspace{2pt}
     \noindent\rule{\textwidth}{1pt} \par
     {
+      \small
       \hfill\thedate\par
       \hfill\textit{\theauthor}\par
     }

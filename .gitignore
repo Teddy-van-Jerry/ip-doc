@@ -303,5 +303,5 @@ TSWLatexianTemp*
 # macOS
 .DS_Store
 
-# output PDF (not ready to release yet)
-ip-doc-example.pdf
+# output PDF
+# ip-doc-example.pdf
