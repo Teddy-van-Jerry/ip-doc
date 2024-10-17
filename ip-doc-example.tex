@@ -90,6 +90,19 @@ Figure~\ref{fig:example} shows a waveform plot of integrated logic analyzer (ILA
   \label{fig:example}
 \end{figure}
 
+\subsection{Margin Note}
+This class provides ready-to-use margin notes (from the \texttt{scrartcl} base class).
+You can use \texttt{\string\marginnote\{...\}}, \texttt{\string\marginpar\{...\}}, and \texttt{\string\marginline\{...\}} to add margin notes.
+
+One special utility provided by this class is the \texttt{\string\labeltext\{...\}\{...\}} command
+to provide custom labels for reference.
+One typical use case is to define the device ID.
+Therefore, with the command \verb|\labeltext{X01}{device:example}|, shown up as \labeltext{X01}{device:example},
+you can reference it later in the document, like \ref{device:example} (\texttt{\string\ref\{device:example\}}).
+The \texttt{\string\deviceID} marco is provided for a margin note with smaller text size.
+Here is what it looks like when referencing the device ID\deviceID{\ref{device:example}}
+we previously defined (\texttt{\string\deviceID\{\string\ref\{device:example\}\}}), which a hyperlink to the text.
+
 \section{Know Issues}
 \begin{enumerate}
   \item The \texttt{factstable} environment internally uses the \texttt{wrapstuff} package, which may cause some issues.

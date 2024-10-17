@@ -1,7 +1,7 @@
 \NeedsTeXFormat {LaTeX2e}
 \RequirePackage {l3keys2e}
 \ProvidesExplClass {ip-doc}
-  {2024/09/25} {1.0} {Class for IP core documentation}
+  {2024/10/17} {1.0} {Class for IP core documentation}
 
 \str_const:Nn \c__ip_doc_base_class_str { scrartcl }
 
@@ -19,7 +19,8 @@
           \PassOptionsToClass { \CurrentOption } { \c__ip_doc_base_class_str }
         }
   }
-\PassOptionsToClass { parskip = half- } { \c__ip_doc_base_class_str }
+\PassOptionsToClass { parskip = half-, numbers = noenddot }
+  { \c__ip_doc_base_class_str }
 \ProcessKeysOptions { ip-doc }
 \LoadClass { \c__ip_doc_base_class_str }
 
@@ -48,6 +49,7 @@
 \NewDocumentCommand \theversion { } { \@version }
 
 %% Font Settings
+\RequirePackage [ T1 ] { fontenc }
 \RequirePackage { newtxtext }
 \RequirePackage { newtxmath }
 % Use sans-serif font.
@@ -114,6 +116,8 @@
 \RequirePackage { wrapstuff }
 % vertical center of the cell
 \renewcommand \tabularxcolumn [ 1 ] { m{#1} }
+% centered X
+\newcolumntype { Y } { > { \raggedright\arraybackslash } X }
 % new environment for a table (facts table)
 \NewDocumentEnvironment { factstable } { O{} O{IP~Facts~Table} }
   {
@@ -130,6 +134,27 @@
 \RequirePackage { enumitem }
 \setlist { nosep, leftmargin = * }
 \RequirePackage [ labelfont = bf ] { caption }
+
+%% Utilities: Margin Notes and Device ID
+\NewDocumentCommand \labeltext { s O{} m m }
+  {
+    \@bsphack%
+    \MakeLinkTarget{}%
+    \def\tst{#2}%
+    \def\labelmarkup{}% How to markup the label itself
+    %\def\refmarkup{\labelmarkup}% How to markup the reference
+    \def\refmarkup{\color{purple}}%
+    \ifx\tst\empty\def\@currentlabel{\refmarkup{#3}}{\label{#4}}%
+    \else\def\@currentlabel{\refmarkup{#2}}{\label{#4}}\fi%
+    \@esphack%
+    \IfBooleanTF#1{}{\labelmarkup{#3}}% visible printed text.
+  }
+
+\reversemarginpar
+\NewDocumentCommand \deviceID { m }
+  {
+    \marginline { \scriptsize #1 }
+  }
 
 %% Title Style
 \NewDocumentCommand \theauthor { } { \@author }
@@ -156,6 +181,7 @@
   }
 
 %% Hyperref
+\RequirePackage { xurl } % break long URLs
 \RequirePackage
   [
     , colorlinks
